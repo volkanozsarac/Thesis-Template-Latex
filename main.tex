@@ -1,0 +1,106 @@
+% ==========================================================================================
+% PhD Thesis Template for Scuola Universitaria Superiore (IUSS) di Pavia 
+% ==========================================================================================
+%
+% Feel free to keep in touch to let us know about any issues or suggestions for further improvements:
+% Volkan Ozsarac <volkan.ozsarac@iusspavia.it> 
+% Jimena Yanina Martin <jimena.martin@iusspavia.it>
+%
+% !!!!!!!!!!!!!!!!!!!! IMPORTANT, IMPORTANT IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!
+% Unfortunately, we use the free version of overleaf and we can't see the history prior to 24 hours. 
+% Therefore, even if you want to contribute and make changes, please keep the existing files.
+% Create a copy folder in your own workspace, and work on that copy for changes.
+% Then please send a pull request through github: https://github.com/volkanozsarac/Thesis-Template-Latex
+% Otherwise just send an email.
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%
+% ==========================================================================================
+% Editorial Notes vo 20/09/2021
+% ==========================================================================================
+% 1-) People from HYRIS curricula must comment lines 131-132 and uncomment lines 133-134 in IUSS_Thesis_Draft.cls, and vice a versa for people from ROSE curricula
+% 2-) The font styles are not exactly identical with the template in word, therefore we have to improvise. Whatever we do there will be some differences between two templates which have to keep in mind.
+
+% ==========================================================================================
+% Remaining Issues in Template vo 20/09/2021
+% ==========================================================================================
+% 1-) Vertical spacing for all must be checked, and fixed if necessary.
+% 2-) Font size for all must be checked, and fixed if necessary. If somebody finds a better font style
+% solution we can adopt that (ebgaramond is not exactly the same as garamond in word).
+% 3-) Format for the rest of the reference types must be added (for example, online sources) Currently we have the correct format for books, thesis, individual study, conference papers, article papers.
+% 4-) Use of all the included packages must be specified to avoid confusion. Then we can remove unnecessary packages
+
+\documentclass{Miscellaneous/IUSS_Thesis_Draft}
+% ==========================================================================================
+% Extra Packages
+% ==========================================================================================
+% These packages are not required in the template, can be used for other purposes.
+% \usepackage{showframe} % To show frame
+\usepackage{todonotes} % To add TODO notes
+\usepackage{lipsum} % temporary package to fill document
+\usepackage{blindtext} % temporary package to fill document
+
+% ==========================================================================================
+% Figure locations jmt 06/09/2021
+% ==========================================================================================
+% We can just set this to Figures, not sure if is very important though (VO)
+% \graphicspath{Figures}
+
+% ==========================================================================================
+% Start of Document
+% ==========================================================================================
+\begin{document}
+
+% ==========================================================================================
+% Front Matter
+% ==========================================================================================
+\title{Insert Title of the UME PhD Thesis here} % Input the thesis name
+\author{Name Surname} % Input the author
+\date{February 2021}  % Input the delivery date
+\input{Nomenclature} % Retrieve the Nomenclature
+\pagestyle{empty} % Remove the page number
+\pagenumbering{roman} % Set page numbering to Roman for front matter
+\advisor{} % First title does not have advisors
+\maketitle % Make the first title page
+\cleardoublepage % Insert an empty page
+\advisor{Supervisors:\\First Advisor, Affiliation\\Second Advisor, Affiliation\\} % Second title page has advisors
+\maketitle % Make the second title page
+\cleardoublepage % Insert an empty page
+
+\begin{abstract} % Abstract text goes here
+This report contains guidelines for formatting a UME PhD Thesis using \LaTeX.
+\end{abstract} % End the abstract
+
+\begin{acknowledgements} % Acknowledgements text goes here
+Acknowledegements can be provided here (though it is not compulsory to include them). 
+\end{acknowledgements} % End the acknowledgements
+
+\makeToC % Make table of contents
+\makeLoF % Make list of figures
+\makeLoT % Make list of tables
+\makeLoS % Make list of symbols (Uses Nomentclature.tex insert symbol definitions there)
+\cleardoublepage % Insert an empty page
+\phantomsection	% Command is necessary for hyperref to jump to the correct page, in other words it puts a hyper marker on the page.
+\pagestyle{fancy} % Not sure what does this do Jime? --> VO
+\pagenumbering{arabic} % Set page numbering to arabic again
+
+% ==========================================================================================
+% Chapters
+% ==========================================================================================
+\input{Chapters/Chapter_1}
+\input{Chapters/Chapter_2}
+
+% ==========================================================================================
+% References
+% ==========================================================================================
+\makebib
+\todo[inline]{Other reference types need to be checked and fixed if necessary}
+% ==========================================================================================
+% Appendices
+% ==========================================================================================
+\input{Appendices/Appendix_A}
+\input{Appendices/Appendix_B}
+
+% ==========================================================================================
+% End of Document
+% ==========================================================================================
+\end{document}
