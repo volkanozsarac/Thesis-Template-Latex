@@ -120,7 +120,7 @@ top=6cm, bottom=4.7cm, bindingoffset=0.5cm}
     \vspace*{-2cm}
     \begin{figure}[h]
     \centering
-    \includegraphics[width=3.47in]  {Figures/Logo_IUSS.jpg}
+    \includegraphics[width=3.47in]  {Miscellaneous/Logo_IUSS.jpg}
     \end{figure}
     \vspace{1cm}
     \textbf{\fontsize{12}{13}\selectfont Scuola Universitaria Superiore IUSS Pavia}\\
