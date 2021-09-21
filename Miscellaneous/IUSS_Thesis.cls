@@ -5,7 +5,7 @@
 
 % ------------- File Identification  ---------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{IUSS_Thesis_Draft}
+\ProvidesClass{IUSS_Thesis}
 
 % ------- Load the Report Class and Basic Packages ---------
 \LoadClass[11pt, twoside]{report}  %jmt 07/09/2021
