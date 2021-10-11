@@ -36,6 +36,8 @@
 \RequirePackage{setspace} % to set linespace
 \RequirePackage{float} % figures
 \RequirePackage{tabularx} % use table
+\RequirePackage{parnotes} % for table footnotes
+
 \RequirePackage{geometry} % to customize page layout, implementing auto-centering and auto-balancing mechanisms
 \RequirePackage{longtable,booktabs,threeparttablex} % for multi-page table, also including long table environments jmt 09/09/2021
 \RequirePackage[colorlinks=true,urlcolor=black,citecolor=black,linkcolor=black,bookmarksnumbered]{hyperref} % cross referencing
@@ -69,7 +71,7 @@
 \RequirePackage[hang]{footmisc} % set style 
 
 % References
-\RequirePackage[american]{babel} % manages culturally-determined typographical (and other) rules for a wide range of languages
+\RequirePackage[english]{babel} % manages culturally-determined typographical (and other) rules for a wide range of languages
 \RequirePackage[square, authoryear]{natbib} % bibliography style
 \RequirePackage{csquotes} % to insert quotations
 
@@ -267,14 +269,15 @@ top=6cm, bottom=4.7cm, bindingoffset=0.5cm}
 %\renewcommand{\thefootnote}{\Roman{footnote}} 	ex.: I, II, III...
 %\renewcommand{\thefootnote}{\alph{footnote}} 	     ex.: a, b, c...
 %\renewcommand{\thefootnote}{\Alph{footnote}} 	ex.: A, B, C...
-\renewcommand{\thefootnote}{\fontsize{11pt}{12}\textsuperscript{\alph{footnote}}} % Footnote format
-\setlength{\footnotemargin}{2mm} % space between counter and footnote
+\renewcommand{\thefootnote}{\alph{footnote}} % Footnote format
+\setlength{\footnotemargin}{0.3em} % space between counter and footnote
 
 % set footnoterule distance to text, width, distance to footnote
-\makeatletter
-\def\footnoterule{\kern 15\p@
-  \hrule \@width 2in \kern 15\p@} % the \hrule is .4pt high    
-\makeatother
+% Yet, I believe this version is nice enough
+% \makeatletter
+% \def\footnoterule{\kern 15\p@
+%   \hrule \@width 2in \kern 15\p@} % the \hrule is .4pt high    
+% \makeatother
 % ============================================================================
 % Nomenclatures jmt 07/09/2021 & 08/09/2021
 % ============================================================================
@@ -283,14 +286,14 @@ top=6cm, bottom=4.7cm, bindingoffset=0.5cm}
 % \renewcommand{\nomname}{\makebox[\linewidth]{List of Symbols}}%
 \renewcommand{\nomname}{\centerline{\fontsize{14}{17}\selectfont List of Symbols} }
 \makenomenclature
-\renewcommand{\nomgroup}[1]{%
-\item[\bfseries
-\ifthenelse{\equal{#1}{A}}{Acronyms}{%
-\ifthenelse{\equal{#1}{S}}{Symbols}{%
-\ifthenelse{\equal{#1}{N}}{Number sets}{}}}%
-]}
 
- 
+% We do not have such grouping in the original documentation
+% \renewcommand{\nomgroup}[1]{%
+% \item[\bfseries
+% \ifthenelse{\equal{#1}{A}}{Acronyms}{%
+% \ifthenelse{\equal{#1}{S}}{Symbols}{%
+% \ifthenelse{\equal{#1}{N}}{Number sets}{}}}%
+% ]}
 
 % ============================================================================
 % Abstract
@@ -403,15 +406,25 @@ top=6cm, bottom=4.7cm, bindingoffset=0.5cm}
 % ============================================================================
 % Tables 
 % ============================================================================
-% Remaining issues: It looks like Table captions are indented for some reason
+% Remaining issues: 
 % jmt 07/09/2021
 \newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
 \newcolumntype{^}{>{\currentrowstyle}}
 \newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}#1\ignorespaces}
 
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% Center the columns
+% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X} % left-aligned
+\newcolumntype{C}{>{\centering\arraybackslash}X} % center-aligned
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X} % right-aligned
+\renewcommand{\arraystretch}{1.3} % Interline spacing
+
+% parnotes can be used together with tabularx to define footnotes for tables only
+\renewcommand{\parnotevskip}{0pt} % To not introduce extra space after placing footnote
+\setlength{\arrayrulewidth}{1pt} % thickness of table lines
 
 % ============================================================================
 % Removal of the first page numbers for each chapter

@@ -4,3 +4,18 @@
 \part*{Appendix B. Type Title Here}
 \thispagestyle{empty} % I added this because these page numbers are not shown in word template
 Some other appendix stuff are inserted here
+\renewcommand{\thetable}{B.\arabic{table}}
+\begin{table}[hbtp]
+  \centering
+  \captionsetup{width=0.7\textwidth}
+  \caption{An appendix table}
+    \begin{tabularx}{0.7\textwidth}{L L L}
+    \hline
+    First column & Second Column & Third column\\
+    \hline
+    First row & First row & First row\\
+    Second row & Second Row & Second Row\\
+    \hline
+    \end{tabularx}
+  \label{tab:appendix_table_2}
+\end{table}
